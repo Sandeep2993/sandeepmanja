@@ -1,0 +1,78 @@
+import React from 'react';
+import {StyleSheet,Button,View,BackHandler,Text,Alert,Linking,} from 'react-native';
+import Message from './src/getmethod';
+
+export default class App extends React.Component{
+  render(){
+    return(
+        <View style={styles.container}>
+          <View style={styles.top}>
+            <Message />
+            {/* <Text style={styles.title}>
+                Please Approve or Reject VMS Request...
+            </Text> */}
+          </View>
+          <View style={styles.center}>
+            <View  style={{width:150,position:'absolute',alignSelf: 'flex-start',}}>
+              <Button
+                title="Approve"
+                color="green"
+                onPress={()=>{Linking.openURL('https://google.com')}}
+                // onPress={() => Alert.alert('Approved')}
+              />
+            </View>
+            <View style={{width:150,position:'absolute',alignSelf: 'flex-end',}}>
+              <Button
+                title="Reject"
+                color="red"
+                onPress={() => Alert.alert('Rejected')}
+              />
+            </View>
+          </View>
+            <View style={styles.space}></View>
+            <View style={styles.bottom}>
+              <View style={{width:150,position:'absolute',alignSelf: 'center',}}>
+                <Button
+                  title="Exit"
+                  color="blue"
+                  // onPress={()=>{Linking.openURL('https://google.com')}}
+                  //onPress={() => Alert.alert('Exit')}
+                  onPress={()=>BackHandler.exitApp()}
+                />
+              </View>
+              <View style={styles.bottomspace}></View>
+            </View>
+        </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    // width:'50%',
+    // alignContent:'center',
+    // left:30,
+    // justifyContent: 'space-between',
+    // marginHorizontal: 25,
+  
+  },
+ 
+  top: {
+    height: '20%',
+  },
+  space:{
+    height:'5%',
+  },
+  center: {
+    height: '15%',
+  },
+  bottom:{
+    height:'15%',
+  },
+  bottomspace:{
+height:'45%'
+  },
+  
+});
